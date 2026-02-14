@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolly ❤️ Chinnu</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+font-family: 'Comic Sans MS', cursive;
+background:black;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* Night Stars */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:transparent;
+box-shadow: 
+50px 100px white, 
+200px 300px white, 
+400px 150px white,
+600px 500px white,
+800px 250px white,
+1000px 450px white;
+}
+
+/* Intro Screen */
+#intro{
+position:absolute;
+top:40%;
+width:100%;
+font-size:2em;
+animation:fadeOut 4s forwards;
+}
+
+@keyframes fadeOut{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* Main Container */
+.container{
+display:none;
+margin-top:12%;
+}
+
+h1{
+font-size:3em;
+}
+
+button{
+padding:15px 30px;
+font-size:1.2em;
+border:none;
+border-radius:30px;
+margin:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+#yesBtn{
+background:#ff1744;
+color:white;
+}
+
+#noBtn{
+background:gray;
+color:white;
+position:absolute;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* Typewriter */
+.typewriter{
+font-size:2em;
+white-space:nowrap;
+overflow:hidden;
+border-right:3px solid white;
+width:0;
+animation:typing 4s steps(30,end) forwards;
+}
+
+@keyframes typing{
+from{width:0;}
+to{width:100%;}
+}
+
+/* Slideshow */
+.slideshow img{
+width:220px;
+height:220px;
+border-radius:20px;
+margin:10px;
+animation:fade 6s infinite;
+}
+
+@keyframes fade{
+0%{opacity:0;}
+50%{opacity:1;}
+100%{opacity:0;}
+}
+
+/* Hearts */
+.heart{
+position:fixed;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* Fireworks */
+.firework{
+position:fixed;
+font-size:30px;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+from{opacity:1;transform:scale(1);}
+to{opacity:0;transform:scale(3);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- Background Music -->
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div id="intro">
+✨ A Special Message For Dolly ✨
+</div>
+
+<div class="container" id="mainContent">
+
+<h1>DOLLY ❤️</h1>
+
+<div class="typewriter">
+I Love You Dolly...
+</div>
+
+<p>
+You are my favorite person,  
+my peaceful place,  
+my forever love story 🎬💖
+</p>
+
+<p style="font-size:1.6em;font-weight:bold;">
+Will you be my baby forever? 💍✨
+</p>
+
+<p>— Yours Always, CHINNU ❤️</p>
+
+<button id="yesBtn" onclick="yesClicked()">YES ❤️</button>
+<button id="noBtn" onmouseover="moveButton()">No 😜</button>
+
+<br><br>
+
+<div class="slideshow">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+
+</div>
+
+<script>
+
+/* Show main after intro */
+setTimeout(()=>{
+document.getElementById("mainContent").style.display="block";
+},4000);
+
+/* Move No Button */
+function moveButton(){
+var btn=document.getElementById("noBtn");
+btn.style.left=Math.random()*window.innerWidth+"px";
+btn.style.top=Math.random()*window.innerHeight+"px";
+}
+
+/* Yes Click */
+function yesClicked(){
+document.body.innerHTML="<h1 style='margin-top:20%;font-size:3em;'>💖 SHE SAID YES 💖<br>Dolly & Chinnu Forever 💍✨</h1>";
+fireworks();
+}
+
+/* Fireworks */
+function fireworks(){
+for(let i=0;i<50;i++){
+let fw=document.createElement("div");
+fw.className="firework";
+fw.innerHTML="✨";
+fw.style.left=Math.random()*100+"vw";
+fw.style.top=Math.random()*100+"vh";
+document.body.appendChild(fw);
+setTimeout(()=>{fw.remove();},1000);
+}
+}
+
+/* Floating Hearts */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+15+"px";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},5000);
+},300);
+
+</script>
+
+</body>
+</html>
